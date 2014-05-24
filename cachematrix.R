@@ -27,7 +27,6 @@ makeCacheMatrix <- function(x = matrix()) {
 
 }
 
-
 ## The cacheSolve function is used to see whether the inverse of the matrix has been calculated or not by cacheing m.
 #  If it has been calculated, there will be a messenge "getting cached data", and the inverse is displayed by return(m).
 # if the inverse has not been calculated at all, it will get the matrix from x, and calculate the inverse by using solve and
