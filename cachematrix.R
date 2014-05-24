@@ -57,5 +57,5 @@ cacheSolve <- function(x, ...) {
 # assign the m value to the setinverse function in the makecachematrix.
         m
 }
-        ## Return a matrix that is the inverse of 'x'
+        ## return a matrix that is the inverse of 'x'
 }
