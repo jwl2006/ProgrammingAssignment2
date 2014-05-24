@@ -11,14 +11,20 @@
 #  the solve function in R, then the inverse of the matrix is saved in m. Then we can display the inverse by function()m and assign
 # it to a variable called getinverse.
 makeCacheMatrix <- function(x = matrix()) {
+#this step creat a new function called makeCacheMatrix, and assign x to be a matrix.
         m <- NULL
+# assign a null value to m in the local environment.
         set <- function(y) {
                 x <<- y
                 m <<- NULL
+#creat another function inside, and set m and x to be cached and can be used in other environments.
         }
         get <- function() x
+#assign the original matrix to get.
         setinverse <- function(solve) m <<- solve
+#Calculate the inverse of the matrix and assign the value to m.
         getinverse <- function() m
+#display the inverse of the matrix.
         list(set = set, get = get,
              setinverse = setinverse,
              getinverse = getinverse)
@@ -33,14 +39,22 @@ makeCacheMatrix <- function(x = matrix()) {
 # assign it to m.
 # 
 cacheSolve <- function(x, ...) {
+#Creat a new function called cachesolve
         m <- x$getinverse()
+#assign the inverse of matrix calculated in the makecachematrix to m,
         if(!is.null(m)) {
+# if m is not null, which means m has been calculated.
                 message("getting cached data")
                 return(m)
+# show the messenge and return the value of m.
         }
+       
         data <- x$get()
+# if m is null, the assign the original matrix to data. 
         m <- solve(data, ...)
+# calculate the inverse of the original matrix and assign it to m
         x$setinverse(m)
+# assign the m value to the setinverse function in the makecachematrix.
         m
 }
         ## Return a matrix that is the inverse of 'x'
